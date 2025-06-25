@@ -7,66 +7,24 @@
         </div>
         <div class="card-body">
             <div>
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        {{invoice.id}}
-
-                    </li>
-                    <li class="list-group-item">
-                        {{invoice.name}}
-                    </li>
-                </ul>
+                <app-invoice-view [id]="invoice.id" [name]="invoice.name"> </app-invoice-view>
             </div>
 
-            <div class="row my-3" >
-
-
+            <div class="row my-3">
                 <div class="col">
-                    <h3>Customer</h3>
-
-                    <ul class="list-group">
-                        <li class="list-group-item active">{{invoice.client.name}} - {{invoice.client.lastName}}</li>
-                        <li class="list-group-item">{{invoice.client.address.city}}</li>
-                        <li class="list-group-item">{{invoice.client.address.country}}</li>
-                    </ul>
+                    <app-client-view [client]="invoice.client"></app-client-view>
                 </div>
 
                 <div class="col">
-                    <h3>Business</h3>
-
-                    <ul class="list-group">
-                        <li class="list-group-item active">{{invoice.company.name}}</li>
-                    </ul>
+                    <app-company-view [company]="invoice.company"></app-company-view>
                 </div>
             </div>
             <div>
-                <h3>products</h3>
-
-                <table class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>id</th>
-                            <th>product</th>
-                            <th>price</th>
-                            <th>quantity</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @for (item of invoice.items; track $index) {
-
-                        <tr>
-                            <td>{{item.id}}</td>
-                            <td>{{item.product}}</td>
-                            <td>{{item.price}}</td>
-                            <td>{{item.quantity}}</td>
-
-                        </tr>
-                        }
-                    </tbody>
-                </table>
+                <app-list-items [items]="invoice.items" (removeEventEmitter)="removeItem($event)"> </app-list-items>
+                <app-total [total]="getTotal()"></app-total>
+                
             </div>
         </div>
-
     </div>
 
 </div>

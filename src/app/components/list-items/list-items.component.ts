@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { InvoiceItem } from '../../models/invoiceItem';
 
 @Component({
   selector: 'app-list-items',
@@ -8,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class ListItemsComponent {
 
+  @Input() items:InvoiceItem[] =[]
+
+  @Output() removeEventEmitter:EventEmitter<number>= new EventEmitter()
+  onRemove(id:number){
+      this.removeEventEmitter.emit(id)
+  }
 }

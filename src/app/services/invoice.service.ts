@@ -13,4 +13,10 @@ export class InvoiceService {
   getInvoice():Invoice{
     return this.invoice;
   }
+
+  getInvoiceTotal():number{
+    
+    const total =this.invoice.items.reduce((vc,va)=>vc+(va.quantity*va.price),0)
+    return total
+  }
 }

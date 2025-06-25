@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Company } from '../../models/Company';
 
 @Component({
   selector: 'app-company-view',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './company-view.component.css'
 })
 export class CompanyViewComponent {
-
+ @Input() company:Company= new Company();
 }
