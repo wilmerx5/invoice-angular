@@ -1,0 +1,21 @@
+<form (ngSubmit)="onSubmit()">
+
+    <input 
+    
+    [(ngModel)]="item.price"
+    name="price"
+    type="text" class="form-control m-3">
+
+
+        <input 
+    
+    [(ngModel)]="item.product"
+    name="product"
+    type="text" class="form-control m-3">
+        <input 
+    
+    [(ngModel)]="item.quantity"
+    name="quantity"
+    type="text" class="form-control m-3">
+    <button class="btn btn-primary" type="submit"> New Item</button>
+</form>
